@@ -1,0 +1,32 @@
+.input-field {
+    display: block;
+    clear: both;
+    margin-right: 20px;
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+    margin-right: 10px;
+    text-align: right;
+}
+
+input,
+select {
+    display: inline-block;
+    width: 200px;
+    padding: 5px;
+}
+
+option.default-select {
+    text-align: center;
+}
+
+a.autofill {
+    color: #369;
+    font-weight: bold;
+}
+
+a.autofill:hover {
+    cursor: pointer;
+}
