@@ -27,6 +27,17 @@ a.autofill {
     font-weight: bold;
 }
 
+a.autofill {
+    display: block;
+    background: #369;
+    color: #fff;
+    padding: 10px;
+    width: 345px;
+    margin-left: 0;
+    text-align: center;
+}
+
 a.autofill:hover {
     cursor: pointer;
+    background: #555;
 }
