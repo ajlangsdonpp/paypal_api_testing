@@ -8,8 +8,8 @@ $client_id = 'AaypZhBrM5u1F7gAVHKX1_Ro7B_8olpffGiyv8BkQA2SVPT4Ok3R32qikpNX';
 $secret = 'EKT0BxDZsMnQsAOt6QLDcR6YXqy6g2b8LHrYLAaNZ4hnLcU_Btpqji45-OxW';
 $version = '98';
 $method = 'DoDirectPayment';
-$process_amt = "97.99";
-$payment_action = 'Sale';
+$process_amt = "2500";
+$payment_action = 'Authorization';
 
 // Store request params in an array (from API documentation)
 $api_request_params = array (

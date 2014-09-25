@@ -1,7 +1,15 @@
-.input-field {
+* {
+    font-family: arial;
+}
+
+.form-section {
     display: block;
     clear: both;
     margin-right: 20px;
+}
+
+h1 {
+    font-size: 20px;
 }
 
 label {
@@ -40,4 +48,14 @@ a.autofill {
 a.autofill:hover {
     cursor: pointer;
     background: #555;
+}
+
+.ec-submit {
+    background: url('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif') no-repeat;
+    text-indent: 9999px;
+    border: none;
+}
+
+.ec-submit:hover {
+    cursor: pointer;
 }

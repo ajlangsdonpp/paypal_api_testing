@@ -2,24 +2,20 @@
 <html>
 <head>
 
-	<link rel="stylesheet" href="../../css/style.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-	<script type='text/javascript' src='../../js/autofill.js'></script>
-
 </head>
 <body>
 <form action="processor.php" method="post">
 	<div class="form-section">
 		<label for="fname">First Name</label>
-		<input type="text" name="fname" value="Johnny"/>
+		<input type="text" name="fname" value="Sammy"/>
 	</div>
 	<div class="form-section">
 		<label for="lname">Last Name</label>
-		<input type="text" name="lname" value="Walker"/>
+		<input type="text" name="lname" value="Samuelson"/>
 	</div>
 	<div class="form-section">
 		<label for="street">Street</label>
-		<input type="text" name="street" value="927 N Palm Drive"/>
+		<input type="text" name="street" value="816 E Vista Court"/>
 	</div>
 	<div class="form-section">
 		<label for="city">City</label>
@@ -53,9 +49,8 @@
 		<label for="cvv">CVV</label>
 		<input type="text" name="cvv" value="458"/>
 	</div>
-	<div class="form-section">
-		<label for=""></label>
-		<input type="submit" value="Submit" />
+	<div class="submit">
+		<input type="submit" value="submit"/>
 	</div>
 </form>
 </body>
