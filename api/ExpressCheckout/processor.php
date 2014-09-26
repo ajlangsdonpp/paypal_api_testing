@@ -42,6 +42,7 @@ curl_setopt($curl, CURLOPT_URL, $api_endpoint);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($curl, CURLOPT_POSTFIELDS, $nvp);
 
+
 $result = curl_exec($curl);
 
 // Parse the API response
@@ -69,12 +70,9 @@ if($result_array) {
 	$ec_token = $result_array['TOKEN'];
 	$correlationid = $result_array['CORRELATIONID'];
 	$ack = $result_array['ACK'];
-	echo "<pre>";
-	print_r($result_array);
-	//exit();
 }
 
-if($ack == "Success") {
+if($result_array['ACK']) {
 	/*$api_request_params = array (
 		// API Data
 		'USER' => $config['sellerData']['username'],
@@ -99,11 +97,15 @@ if($ack == "Success") {
 	// Parse the API response
 	$result_array = nvpConvert($result);*/
 
-	$output = "Total: $process_amt<br/><br/>";
+
+
+	$output = "Total: \$$process_amt<br/><br/>";
 	$output.= '<a href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout
-	&token=' . urldecode($ec_token) . '">Click to Continue</a>';
+	&token=' . urldecode($ec_token) . '" class="ec-submit">Click to Continue</a>';
 
 	echo $output;
-
+}
+else {
+	echo "Error";
 }
 
