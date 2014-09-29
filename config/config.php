@@ -12,6 +12,16 @@ $config = array(
 	),
 	'apiInfo' => array(
 		'version' => '117.0',
+	),
+	'payFlow' => array(
+		/*'USER' => 'altest',
+		'VENDOR' => 'alangsdonpaypal',
+		'PARTNER' => 'PayPal',
+		'PWD' => 'paypal1234',*/
+		'USER' => 'capleswebdev1',
+		'VENDOR' => 'capleswebdev',
+		'PARTNER' => 'PayPal',
+		'PWD' => 'password12345',
 	)
 );
 
