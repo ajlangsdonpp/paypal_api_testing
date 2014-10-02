@@ -1,65 +1,40 @@
 <?php
 include_once("../../config/config.php");
 
+session_start();
+
 $api_endpoint = 'https://pilot-payflowpro.paypal.com';
+$returl_url = 'http://api.local/api/PayFlowEC/return.php';
+$cancel_url = $returl_url;
+$process_amt = $_POST['amount'];
+$_SESSION['amount'] = $process_amt;
+// Send EC rerdirect to
+// https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=<EC-TOKEN>
 
 $api_request_params = array (
-	'USER' => $config['payFlow']['USER'],
-	'VENDOR' => $config['payFlow']['VENDOR'],
+	'TRXTYPE' => $_POST['trxtype'],
+	'ACTION' => $_POST['action'],
+	'AMT' => $_POST['amount'],
+	'CANCELURL' => $cancel_url,
+	'RETURNURL' => $returl_url,
 	'PARTNER' => $config['payFlow']['PARTNER'],
 	'PWD' => $config['payFlow']['PWD'],
-	'TRXTYPE' => $_POST['trxtype'],
-	'TENDER' => $_POST['tender'],
-	'ACCT' => $_POST['cardnum'],
-	'AMT' => $_POST['amount'],
-	'EXPDATE' => $_POST['expmonth'] . $_POST['expyear'],
-	'CVV2' => $_POST['cvv'],
-	'FIRSTNAME' => $_POST['fname'],
-	'LASTNAME' => $_POST['lname'],
-	'STREET' => $_POST['street'],
-	'CITY' => $_POST['city'],
-	'STATE' => $_POST['state'],
-	'ZIP' => $_POST['zip'],
-	'COUNTRY' => 'US',
+	'USER' => $config['payFlow']['USER'],
+	'VENDOR' => $config['payFlow']['VENDOR'],
+	'TENDER' => 'P',
 );
 
-$nvp = "";
-$nvp_test = "";
-$i = 0;
-foreach($api_request_params as $var => $val) {
-	if($i != 0) {
-		$nvp.= "&";
-	}
-	$nvp .= $var . '=' . $val;
-	$nvp_test .= $var . '=' . $val . '<br/>';
-	$i++;
-}
+$nvp = toNVP($api_request_params);
 
-function nvpConvert($myString) {
-	$ppResponse = array();
-	parse_str($myString, $ppResponse);
-	return $ppResponse;
-}
-
-// Parse the API response
 $result = runCurl($api_endpoint, $nvp);
-$result_array = nvpConvert($result);
+$result_array = ppResponse($result);
 
 printVars($result_array);
 
-?>
+$ec_token = $result_array['TOKEN'];
 
-<h3>Reference Transaction</h3>
-<b>Current Amount: </b><?php echo $_POST['amount']; ?><br/>
-<b>PNREF: </b> <?php echo $result_array['PNREF']; ?>
-<form action="reference.php" method="post">
-	<div class="form-section">
-		<label for="newamount">New Amount</label>
-		<input type="text" name="newamount"/>
-	</div>
-	<div class="form-section">
-		<label for=""></label>
-		<input type="submit" value="Submit" />
-	</div>
-	<input type="hidden" name="pnref" value="<?php echo $result_array['PNREF']; ?>">
-</form>
+$output = "Total: \$$process_amt<br/><br/>";
+$output.= '<a href="https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout
+	&token=' . urldecode($ec_token) . '" class="ec-submit">Click to Continue</a>';
+
+echo $output;

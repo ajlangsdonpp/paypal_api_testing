@@ -14,14 +14,14 @@ $config = array(
 		'version' => '117.0',
 	),
 	'payFlow' => array(
-		/*'USER' => 'altest',
+		'USER' => 'altest',
 		'VENDOR' => 'alangsdonpaypal',
 		'PARTNER' => 'PayPal',
-		'PWD' => 'paypal1234',*/
-		'USER' => 'capleswebdev1',
+		'PWD' => 'paypal1234',
+		/*'USER' => 'capleswebdev1',
 		'VENDOR' => 'capleswebdev',
 		'PARTNER' => 'PayPal',
-		'PWD' => 'password12345',
+		'PWD' => 'password12345',*/
 	)
 );
 
