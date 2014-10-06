@@ -6,24 +6,20 @@
 </head>
 <body>
 <h3>PayPal Hosted Checkout</h3>
-<form action="https://www.sandbox.paypal.com/acquiringweb?cmd=_hosted-payment" method="post">
-	<input type="hidden" name="cmd" value="_hosted-payment" />
+<form action="processor.php" method="post">
 	<div class="form-section">
-		<label for="cvv">Subtotal</label>
-		<input type="text" name="subtotal" value="100"/>
+		<label for="trxtype">Transaction Type</label>
+		<select name="trxtype">
+			<option value="S">Sale</option>
+			<option value="A">Authorization</option>
+		</select>
 	</div>
-	<input type="hidden" name="business" value="AATJ9KCSEGBHE" />
 	<div class="form-section">
-		<label for="paymentaction">Action</label>
-		<input type="hidden" name="paymentaction" value="sale" />
-		<!--<select name="paymentaction">
-			<option value="sale" selected>Sale</option>
-			<option value="authorize">Authorize</option>
-		</select>-->
+		<label for="amount">Amount</label>
+		<input type="text" name="amount" value="100"/>
 	</div>
-	<input type="hidden" name="return" value="http://api.local/api/PayPalHosted/return.php" />
 	<div class="form-section">
-		<label for=""></label>
-		<input type="submit" value="Submit" name="METHOD" />
+		<label></label>
+		<input type="submit" value="Submit" />
 	</div>
 </form>
